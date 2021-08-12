@@ -352,7 +352,7 @@ X= data[ft]
 y = data[['PE']]
 cv = KFold(n_splits=10)
 reg=LinearRegression()
-reg.fit(X_train,y_train)
+reg.fit(X,y)
 y_predict=cross_val_predict(reg,X,y,cv=cv)
 cross=cross_val_score(reg,X,y,cv=cv)
 print("RMSE: " +str(sqrt(mean_squared_error(y,y_predict))))
@@ -365,7 +365,7 @@ print("Score model: " +str(cross))
 #Plot spilts=8
 import matplotlib.pyplot as plt
 plt.figure(figsize=(12,8))
-plt.scatter(y_test,y_predict,color='#f7cea8')
+plt.scatter(y,y_predict,color='#f7cea8')
 plt.xlabel('Actual')
 plt.ylabel('Predicted')
 plt.title('Actual vs Predicted')
@@ -374,7 +374,7 @@ plt.title('Actual vs Predicted')
 # In[64]:
 
 
-sns.regplot(x=y_test,y=y_predict,color='#ff9456',x_bins=20 )
+sns.regplot(x=y,y=y_predict,color='#ff9456',x_bins=20 )
 
 
 # In[73]:
